@@ -21,7 +21,7 @@ npm run build
 ### Run Watcher
 
 ```
-npm run build
+npm run watch
 ```
 
 ### Start Dev Server
