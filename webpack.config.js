@@ -18,6 +18,11 @@ module.exports = {
     filename: '[name].[hash].js',
     path: path.resolve(__dirname, 'dist'),
   },
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+    }
+  },
   module: {
     rules: [
       {
@@ -38,6 +43,7 @@ module.exports = {
         use: {
           loader: 'file-loader',
           options: {
+            esModule: false,
             name: '[path][name].[hash].[ext]'
           }
         }
