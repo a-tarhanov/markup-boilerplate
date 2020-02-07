@@ -15,7 +15,7 @@ npm run dev
 ### Build Prod Version
 
 ```
-npm run build
+npm run prod
 ```
 
 ### Run Watcher
