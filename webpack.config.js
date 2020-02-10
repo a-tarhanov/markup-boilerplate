@@ -4,7 +4,6 @@ const fs = require('fs')
 const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 const dotenv = require('dotenv').config()
@@ -78,10 +77,6 @@ module.exports = {
         filename: `./${page.replace(/\.pug/, '.html')}`
       })
     }),
-    new CopyWebpackPlugin([{
-      from: path.resolve(__dirname, 'src/assets/favicon.ico'),
-      to: path.resolve(__dirname, 'dist')
-    }]),
     new webpack.DefinePlugin({
       'process.env': dotenv.parsed
     }),
