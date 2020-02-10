@@ -1,10 +1,13 @@
 const path = require('path')
 const fs = require('fs')
 
+const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+
+const dotenv = require('dotenv').config()
 
 const pagesDir = path.resolve(__dirname, 'src/templates/pages')
 const pages = fs.readdirSync(pagesDir).filter(fileName => fileName.endsWith('.pug'))
@@ -79,9 +82,13 @@ module.exports = {
       from: path.resolve(__dirname, 'src/assets/favicon.ico'),
       to: path.resolve(__dirname, 'dist')
     }]),
+    new webpack.DefinePlugin({
+      'process.env': dotenv.parsed
+    }),
   ],
   devServer: {
-    port: 8080
+    host: process.env.DEV_SERVER_HOST,
+    port: process.env.DEV_SERVER_PORT
   },
   devtool: 'source-map'
 }
