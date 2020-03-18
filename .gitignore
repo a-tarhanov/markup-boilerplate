@@ -13,3 +13,4 @@ yarn-error.log*
 .vscode
 /package-lock.json
 /yarn-lock.json
+/yarn.lock
