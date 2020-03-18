@@ -10,7 +10,7 @@
     "serve": "webpack-dev-server --mode development --open"
   },
   "browserslist": [
-    "> 0.25%, not dead"
+    "defaults"
   ],
   "author": "Alexander Tarkhanov <starhanov@gmail.com>",
   "license": "ISC",
