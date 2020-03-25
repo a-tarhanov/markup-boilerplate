@@ -4,10 +4,10 @@
   "description": "Boilerplate for markup",
   "private": true,
   "scripts": {
-    "dev": "webpack --mode development",
-    "prod": "webpack --mode production",
-    "watch": "webpack --mode development --watch",
-    "serve": "webpack-dev-server --mode development --open"
+    "prod": "webpack --mode production --hide-modules",
+    "dev": "webpack --mode development --progress --hide-modules",
+    "watch": "webpack --mode development --progress --hide-modules --watch",
+    "serve": "webpack-dev-server --mode development --progress --open"
   },
   "browserslist": [
     "defaults"
