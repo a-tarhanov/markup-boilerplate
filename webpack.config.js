@@ -4,6 +4,7 @@ const fs = require('fs')
 const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackInlineSVGPlugin = require('html-webpack-inline-svg-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 const dotenv = require('dotenv').config()
@@ -76,6 +77,9 @@ module.exports = {
         template: `${pagesDir}/${page}`,
         filename: `./${page.replace(/\.pug/, '.html')}`
       })
+    }),
+    new HtmlWebpackInlineSVGPlugin({
+      runPreEmit: true
     }),
     new webpack.DefinePlugin({
       'process.env': JSON.stringify(dotenv.parsed)
