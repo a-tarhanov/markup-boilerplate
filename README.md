@@ -1,31 +1,31 @@
 # Markup Boilerplate
 
-### Installation
+**Installation**
 
 ```
-npm install
+yarn
 ```
 
-### Build Dev Version
+**Start Dev Server**
 
 ```
-npm run dev
+yarn serve
 ```
 
-### Build Prod Version
+**Build Prod Version**
 
 ```
-npm run prod
+yarn prod
 ```
 
-### Run Watcher
+**Build Dev Version**
 
 ```
-npm run watch
+yarn dev
 ```
 
-### Start Dev Server
+**Run Watcher**
 
 ```
-npm run serve
+yarn watch
 ```

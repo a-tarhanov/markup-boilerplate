@@ -4,7 +4,6 @@ const fs = require('fs')
 const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
-const HtmlWebpackInlineSVGPlugin = require('html-webpack-inline-svg-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 const dotenv = require('dotenv').config()
@@ -39,10 +38,13 @@ module.exports = {
       },
       {
         test: /\.pug$/,
-        loader: 'pug-loader'
+        loader: 'pug-loader',
+        options: {
+          self: true
+        },
       },
       {
-        test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)$/,
+        test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2|svg)$/,
         use: {
           loader: 'file-loader',
           options: {
@@ -69,6 +71,9 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(),
+    new webpack.DefinePlugin({
+      'process.env': JSON.stringify(dotenv.parsed)
+    }),
     new MiniCssExtractPlugin({
       filename: '[name].[hash].css'
     }),
@@ -77,13 +82,7 @@ module.exports = {
         template: `${pagesDir}/${page}`,
         filename: `./${page.replace(/\.pug/, '.html')}`
       })
-    }),
-    new HtmlWebpackInlineSVGPlugin({
-      runPreEmit: true
-    }),
-    new webpack.DefinePlugin({
-      'process.env': JSON.stringify(dotenv.parsed)
-    }),
+    })
   ],
   devServer: {
     host: process.env.DEV_SERVER_HOST,
